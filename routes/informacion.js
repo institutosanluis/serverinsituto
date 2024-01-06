@@ -24,7 +24,8 @@ informacionRouter.post('/upload_image', mul.single('image'), uploadImage, async 
 })
 
 informacionRouter.post('/delete_image', (req, res) => {
-    const file = administrador.file("Carreras/" + req.body.id);
+    var carpeta =  req.body.carpeta;
+    const file = administrador.file(`${carpeta}/ ${req.body.id}`);
     file.delete();
 
     res.status(200).json({

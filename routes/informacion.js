@@ -1,7 +1,7 @@
 const express = require('express');
 const { db } = require('../firebase');
 const multer = require('multer');
-const { uploadImage, administrador } = require('./firebase');
+const { uploadImage, administrador } = require('../firebase');
 
 const mul = multer({
     storage: multer.memoryStorage(),
@@ -24,8 +24,8 @@ informacionRouter.post('/upload_image', mul.single('image'), uploadImage, async 
 })
 
 informacionRouter.post('/delete_image', (req, res) => {
-    /*const file = administrador.file(`${req.body.carpeta}/${req.body.id}`);
-    file.delete();*/
+    const file = administrador.file(`${req.body.carpeta}/${req.body.id}`);
+    file.delete();
 
     res.status(200).json({
         message: 'IMAGE DELETE  SUCCESSFULLY',

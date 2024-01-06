@@ -23,7 +23,7 @@ informacionRouter.post("/agregar-carrera", (req, res) => {
 
     ref.push(data).then((result) => {
         var update = db.database().ref(`Niveles/Carreras/${result.key}`)
-        update.update.update({
+        update.update({
             'id': result.key
         }).then((result) => {
             res.send(result);

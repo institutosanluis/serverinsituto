@@ -19,7 +19,7 @@ informacionRouter.get('/portada/:type', async (req, res) => {
 
 informacionRouter.post("/agregar-carrera", (req, res) => {
     const ref = db.database().ref('Niveles/Carreras')
-    ref.push(req.body.carrera).then((result) => {
+    ref.set(req.body.carrera).then((result) => {
         res.send(result);
     }).catch((error) => {
         // The write failed...

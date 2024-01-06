@@ -48,6 +48,13 @@ informacionRouter.get('/carreras', async (req, res) => {
     });
 })
 
+informacionRouter.get('/basico/grado', async (req, res) => {
+    const ref = db.database().ref(`Niveles/Basico/Grados`);
+    ref.once('value', snapshot => {
+        res.send(snapshot.val());
+    });
+})
+
 
 informacionRouter.get('/portada/:type', async (req, res) => {
     const ref = db.database().ref(`Portadas/${req.params.type}`);

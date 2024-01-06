@@ -83,7 +83,7 @@ informacionRouter.post("/agregar-carrera", (req, res) => {
 })
 
 informacionRouter.post("/agregar-grado", (req, res) => {
-    var data = req.body.carrera;
+    var data = req.body.grado;
     const ref = db.database().ref(`Niveles/Basico/Grados/`)
     ref.push(data).then((result) => {
         var update = db.database().ref(`Niveles/Basico/Grados/${result.key}`)

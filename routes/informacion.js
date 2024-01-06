@@ -23,6 +23,15 @@ informacionRouter.post('/upload_image', mul.single('image'), uploadImage, async 
     })
 })
 
+informacionRouter.post('/delete_image', (req, res) => {
+    const file = administrador.file("Carreras/" + req.body.id);
+    file.delete();
+
+    res.status(200).json({
+        message: 'IMAGE DELETE  SUCCESSFULLY',
+    })
+})
+
 
 informacionRouter.get('/info-establecimiento', async (req, res) => {
     const ref = db.database().ref(`Establecimiento/Informacion`);

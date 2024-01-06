@@ -17,7 +17,7 @@ const uploadImage = (req, res, next) => {
         if (!req.file) return next();
         const imagen = req.file;
         const nombreArquivo = Date.now() + "." + imagen.originalname.split(".").pop();
-        const file = bucket.file('Comercios/' + nombreArquivo);
+        const file = bucket.file('Carreras/' + nombreArquivo);
         const stream = file.createWriteStream({
             metadata: {contentType: imagen.mimetype}
         })

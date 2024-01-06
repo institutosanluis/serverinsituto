@@ -1,7 +1,28 @@
 const express = require('express');
-const { db } = require('../firebase')
+const { db } = require('../firebase');
+const multer = require('multer');
+const { uploadImage } = require('./firebase');
+
+const mul = multer({
+    storage: multer.memoryStorage(),
+    limits: 1024 * 1024
+})
+
 
 const informacionRouter = express.Router();
+
+informacionRouter.post('/upload_image', mul.single('image'), uploadImage, async (req, res) => {
+    const url = {
+        url: req.file.firebaseUrl,
+        id_photo: req.body.id_photo
+    }
+
+    res.status(200).json({
+        message: 'IMAGE UPLOADED SUCCESSFULLY',
+        data: url
+    })
+})
+
 
 informacionRouter.get('/info-establecimiento', async (req, res) => {
     const ref = db.database().ref(`Establecimiento/Informacion`);
@@ -20,7 +41,6 @@ informacionRouter.get('/portada/:type', async (req, res) => {
 informacionRouter.post("/agregar-carrera", (req, res) => {
     var data = req.body.carrera;
     const ref = db.database().ref(`Niveles/Carreras/`)
-
     ref.push(data).then((result) => {
         var update = db.database().ref(`Niveles/Carreras/${result.key}`)
         update.update({

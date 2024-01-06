@@ -1,7 +1,7 @@
 const express = require('express');
 const { db } = require('../firebase');
 const multer = require('multer');
-const { uploadImage } = require('./firebase');
+const { uploadImage, administrador } = require('./firebase');
 
 const mul = multer({
     storage: multer.memoryStorage(),

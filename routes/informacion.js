@@ -22,10 +22,12 @@ informacionRouter.post("/agregar-carrera", (req, res) => {
     if(data.id == null){
         data.id = new Date();
     }
-    
+
     const ref = db.database().ref(`Niveles/Carreras/${data.id}`)
-    ref.set(req.body.carrera).then((result) => {
-        res.send(result);
+
+    ref.push(req.body.carrera).then((result) => {
+     
+        res.send({key:    result.key(), result: result});
     }).catch((error) => {
         // The write failed...
         res.send(error);

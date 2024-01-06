@@ -18,7 +18,12 @@ informacionRouter.get('/portada/:type', async (req, res) => {
 })
 
 informacionRouter.post("/agregar-carrera", (req, res) => {
-    const ref = db.database().ref('Niveles/Carreras')
+    var data = req.body.carrera;
+    if(data.id == null){
+        data.id = new Date();
+    }
+    
+    const ref = db.database().ref(`Niveles/Carreras/${data.id}`)
     ref.set(req.body.carrera).then((result) => {
         res.send(result);
     }).catch((error) => {

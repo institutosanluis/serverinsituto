@@ -42,7 +42,7 @@ informacionRouter.get('/info-establecimiento', async (req, res) => {
 })
 
 informacionRouter.get('/carreras', async (req, res) => {
-    const ref = db.database().ref(`Niveles/Carreras`);
+    const ref = db.database().ref(`Niveles/Diversificado/Carreras`);
     ref.once('value', snapshot => {
         res.send(snapshot.val());
     });

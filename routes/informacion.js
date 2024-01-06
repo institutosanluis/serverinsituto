@@ -41,6 +41,14 @@ informacionRouter.get('/info-establecimiento', async (req, res) => {
     });
 })
 
+informacionRouter.get('/carreras', async (req, res) => {
+    const ref = db.database().ref(`Niveles/Carreras`);
+    ref.once('value', snapshot => {
+        res.send(snapshot.val());
+    });
+})
+
+
 informacionRouter.get('/portada/:type', async (req, res) => {
     const ref = db.database().ref(`Portadas/${req.params.type}`);
     ref.once('value', snapshot => {
@@ -50,9 +58,9 @@ informacionRouter.get('/portada/:type', async (req, res) => {
 
 informacionRouter.post("/agregar-carrera", (req, res) => {
     var data = req.body.carrera;
-    const ref = db.database().ref(`Niveles/Carreras/`)
+    const ref = db.database().ref(`Niveles/Diversificado/Carreras/`)
     ref.push(data).then((result) => {
-        var update = db.database().ref(`Niveles/Carreras/${result.key}`)
+        var update = db.database().ref(`Niveles/Diversificado/Carreras${result.key}`)
         update.update({
             'id': result.key
         }).then((result) => {

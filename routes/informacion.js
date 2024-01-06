@@ -27,7 +27,7 @@ informacionRouter.post("/agregar-carrera", (req, res) => {
 
     ref.push(req.body.carrera).then((result) => {
      
-        res.send(result);
+        res.send(result.key);
     }).catch((error) => {
         // The write failed...
         res.send(error);

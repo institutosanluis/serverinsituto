@@ -10,5 +10,12 @@ informacionRouter.get('/info-establecimiento', async (req, res) => {
     });
 })
 
+informacionRouter.get('/portada/:type', async (req, res) => {
+    const ref = db.database().ref(`Portadas/${req.params.type}`);
+    ref.once('value', snapshot => {
+        res.send(snapshot.val());
+    });
+})
+
 
 module.exports = informacionRouter;

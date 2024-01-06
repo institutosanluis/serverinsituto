@@ -60,7 +60,7 @@ informacionRouter.post("/agregar-carrera", (req, res) => {
     var data = req.body.carrera;
     const ref = db.database().ref(`Niveles/Diversificado/Carreras/`)
     ref.push(data).then((result) => {
-        var update = db.database().ref(`Niveles/Diversificado/Carreras${result.key}`)
+        var update = db.database().ref(`Niveles/Diversificado/Carreras/${result.key}`)
         update.update({
             'id': result.key
         }).then((result) => {

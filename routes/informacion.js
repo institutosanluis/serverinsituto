@@ -24,8 +24,8 @@ informacionRouter.post('/upload_image', mul.single('image'), uploadImage, async 
 })
 
 informacionRouter.post('/delete_image', (req, res) => {
-    const file = administrador.file(`${req.body.carpeta}/${req.body.id}`);
-    file.delete();
+    /*const file = administrador.file(`${req.body.carpeta}/${req.body.id}`);
+    file.delete();*/
 
     res.status(200).json({
         message: 'IMAGE DELETE  SUCCESSFULLY',

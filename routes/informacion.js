@@ -82,6 +82,18 @@ informacionRouter.post("/agregar-carrera", (req, res) => {
     });
 })
 
+informacionRouter.post("/agregar-carrera-grado", (req, res) => {
+    var data = req.body.grado;
+        var update = db.database().ref(`Niveles/Diversificado/Carreras/${data.id}`)
+        update.push(data).then((result) => {
+            res.send(result);
+        }).catch((error) => {
+            // The write failed...
+            res.send(error);
+        });
+
+})
+
 informacionRouter.post("/agregar-grado", (req, res) => {
     var data = req.body.grado;
     const ref = db.database().ref(`Niveles/Basico/Grados/`)

@@ -115,7 +115,7 @@ informacionRouter.post("/agregar-grado", (req, res) => {
 
 
 informacionRouter.post("/agregar-evento", (req, res) => {
-    var data = req.body.carrera;
+    var data = req.body.evento;
     const ref = db.database().ref(`EventosActividades/`)
     ref.push(data).then((result) => {
         var update = db.database().ref(`EventosActividades/${result.key}`)

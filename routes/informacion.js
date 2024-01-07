@@ -65,8 +65,8 @@ informacionRouter.get('/portada/:type', async (req, res) => {
 
 
 informacionRouter.get('/eventosActividades', async (req, res) => {
-    const ref = db.database().ref(`EventosActividades`);
-    ref.limitToFirst(6). once('value', snapshot => {
+    const ref = db.database().ref(`EventosActividades/`);
+    ref.orderByChild('fecha').limitToLast(2). on('value', snapshot => {
         res.send(snapshot.val());
     });
 })

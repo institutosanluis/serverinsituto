@@ -114,4 +114,25 @@ informacionRouter.post("/agregar-grado", (req, res) => {
 })
 
 
+informacionRouter.post("/agregar-evento", (req, res) => {
+    var data = req.body.carrera;
+    const ref = db.database().ref(`EventosActividades/`)
+    ref.push(data).then((result) => {
+        var update = db.database().ref(`EventosActividades/${result.key}`)
+        update.update({
+            'id': result.key
+        }).then((result) => {
+            res.send(result);
+        }).catch((error) => {
+            // The write failed...
+            res.send(error);
+        });
+    }).catch((error) => {
+        // The write failed...
+        res.send(error);
+    });
+
+})
+
+
 module.exports = informacionRouter;

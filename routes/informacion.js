@@ -102,7 +102,7 @@ informacionRouter.post("/agregar-carrera-grado", (req, res) => {
 
 })
 
-informacionRouter.post("/agregar-requisitos", (req, res) => {
+/*informacionRouter.post("/agregar-requisitos", (req, res) => {
         var update = db.database().ref(`Requisitos/${req.body.nivel}`)
         update.push(req.body).then((result) => {
             res.send(result);
@@ -111,7 +111,7 @@ informacionRouter.post("/agregar-requisitos", (req, res) => {
             res.send(error);
         });
 
-})
+})*/
 
 informacionRouter.post("/agregar-requisitos", (req, res) => {
     var data = req.body;

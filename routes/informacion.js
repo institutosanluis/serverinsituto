@@ -115,8 +115,8 @@ informacionRouter.post("/agregar-requisitos", (req, res) => {
 
 informacionRouter.post("/agregar-requisitos", (req, res) => {
     var data = req.body;
-    const ref = db.database().ref(`Requisitos/${req.body.nivel}`)
-    ref.push(data).then((result) => {
+    const ref = db.database().ref(`Requisitos/${req.body.nivel}/`)
+    ref.set(data).then((result) => {
         var update = db.database().ref(`Requisitos/${req.body.nivel}/${result.key}`)
         update.update({
             'id': result.key

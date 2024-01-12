@@ -102,6 +102,17 @@ informacionRouter.post("/agregar-carrera-grado", (req, res) => {
 
 })
 
+informacionRouter.post("/agregar-requisitos", (req, res) => {
+        var update = db.database().ref(`Requisitos/${req.body.nivel}`)
+        update.push(req.body).then((result) => {
+            res.send(result);
+        }).catch((error) => {
+            // The write failed...
+            res.send(error);
+        });
+
+})
+
 informacionRouter.post("/agregar-grado", (req, res) => {
     var data = req.body.grado;
     const ref = db.database().ref(`Niveles/Basico/Grados/`)

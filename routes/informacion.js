@@ -79,8 +79,8 @@ informacionRouter.get('/alleventosActividades', async (req, res) => {
 })
 
 
-informacionRouter.get('/requisitos/:nivel', async (req, res) => {
-    const ref = db.database().ref(`Requisitos/${req.params.nivel}/`);
+informacionRouter.get('/requisitos', async (req, res) => {
+    const ref = db.database().ref(`Requisitos/`);
     ref.once('value', snapshot => {
         res.send(snapshot.val());
     });

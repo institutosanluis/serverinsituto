@@ -86,6 +86,13 @@ informacionRouter.get('/requisitos', async (req, res) => {
     });
 })
 
+informacionRouter.get('/contamoscon', async (req, res) => {
+    const ref = db.database().ref(`Establecimiento/ContamosCon/`);
+    ref.once('value', snapshot => {
+        res.send(snapshot.val());
+    });
+})
+
 
 informacionRouter.post("/agregar-carrera", (req, res) => {
     var data = req.body.carrera;

@@ -88,7 +88,7 @@ informacionRouter.get('/requisitos', async (req, res) => {
 
 informacionRouter.get('/contamoscon', async (req, res) => {
     const ref = db.database().ref(`Establecimiento/ContamosCon/`);
-    ref.once('value', snapshot => {
+    ref.on('value', snapshot => {
         res.send(snapshot.val());
     });
 })

@@ -66,10 +66,26 @@ informacionRouter.get('/portada/:type', async (req, res) => {
 
 informacionRouter.get('/eventosActividades', async (req, res) => {
     const ref = db.database().ref(`EventosActividades/`);
-    ref.orderByChild('fecha').limitToLast(5). on('value', snapshot => {
+    ref.orderByChild('fecha').limitToLast(5).once('value', snapshot => {
         res.send(snapshot.val());
     });
 })
+
+informacionRouter.get('/alleventosActividades', async (req, res) => {
+    const ref = db.database().ref(`EventosActividades/`);
+    ref.orderByChild('fecha'). once('value', snapshot => {
+        res.send(snapshot.val());
+    });
+})
+
+
+informacionRouter.get('/requisitos/:nivel', async (req, res) => {
+    const ref = db.database().ref(`Requisitos/${nivel}/`);
+    ref.once('value', snapshot => {
+        res.send(snapshot.val());
+    });
+})
+
 
 informacionRouter.post("/agregar-carrera", (req, res) => {
     var data = req.body.carrera;

@@ -93,6 +93,24 @@ informacionRouter.get('/contamoscon', async (req, res) => {
     });
 })
 
+informacionRouter.post("/agregar-caracteristicas", (req, res) => {
+    var data = req.body;
+    const ref = db.database().ref(`Establecimiento/ContamosCon/`)
+    ref.push(data).then((result) => {
+        var update = db.database().ref(`Establecimiento/ContamosCon/${result.key}`)
+        update.update({
+            'id': result.key
+        }).then((result) => {
+            res.send(result);
+        }).catch((error) => {
+            // The write failed...
+            res.send(error);
+        });
+    }).catch((error) => {
+        // The write failed...
+        res.send(error);
+    });
+})
 
 informacionRouter.post("/agregar-carrera", (req, res) => {
     var data = req.body.carrera;

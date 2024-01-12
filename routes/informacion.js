@@ -117,15 +117,7 @@ informacionRouter.post("/agregar-requisitos", (req, res) => {
     var data = req.body;
     const ref = db.database().ref(`Requisitos/${req.body.nivel}/`)
     ref.set(data).then((result) => {
-        var update = db.database().ref(`Requisitos/${req.body.nivel}/${result.key}`)
-        update.update({
-            'id': result.key
-        }).then((result) => {
             res.send(result);
-        }).catch((error) => {
-            // The write failed...
-            res.send(error);
-        });
     }).catch((error) => {
         // The write failed...
         res.send(error);

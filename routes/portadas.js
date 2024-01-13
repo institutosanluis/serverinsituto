@@ -19,4 +19,12 @@ portadasRouter.get('/all', async (req, res) => {
     });
 })
 
+
+portadasRouter.get('/getportada/:id', async (req, res) => {
+    const ref = db.database().ref(`Portadas/${req.params.id}/`);
+    ref.once('value', snapshot => {
+        res.send(snapshot.val());
+    });
+})
+
 module.exports = portadasRouter;

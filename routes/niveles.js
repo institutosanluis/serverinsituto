@@ -12,7 +12,7 @@ const mul = multer({
 const nivelesRouter = express.Router();
 
 
-informacionRouter.get('/all', async (req, res) => {
+nivelesRouter.get('/all', async (req, res) => {
     const ref = db.database().ref(`Niveles/`);
     ref.once('value', snapshot => {
         res.send(snapshot.val());

@@ -27,4 +27,15 @@ portadasRouter.get('/getportada/:id', async (req, res) => {
     });
 })
 
+portadasRouter.post("/agregar-portada", (req, res) => {
+    var data = req.body;
+    const ref = db.database().ref(`Portadas/${data.id}`)
+    ref.set(data).then((result) => {
+        res.send(result);
+    }).catch((error) => {
+        // The write failed...
+        res.send(error);
+    });
+})
+
 module.exports = portadasRouter;

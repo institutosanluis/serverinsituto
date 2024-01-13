@@ -86,6 +86,14 @@ informacionRouter.get('/requisitos', async (req, res) => {
     });
 })
 
+informacionRouter.get('/infraestructura', async (req, res) => {
+    const ref = db.database().ref(`Establecimiento/Infraestructura/`);
+    ref.once('value', snapshot => {
+        res.send(snapshot.val());
+    });
+})
+
+
 informacionRouter.get('/contamoscon', async (req, res) => {
     const ref = db.database().ref(`Establecimiento/ContamosCon/`);
     ref.once('value', snapshot => {

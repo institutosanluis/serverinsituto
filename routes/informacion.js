@@ -65,14 +65,14 @@ informacionRouter.get('/portada/:type', async (req, res) => {
 
 
 informacionRouter.get('/eventosActividades', async (req, res) => {
-    const ref = db.database().ref(`EventosActividades/`);
+    const ref = db.database().ref(`EventosActividades/EventosPasados`);
     ref.orderByChild('fecha').limitToLast(5).once('value', snapshot => {
         res.send(snapshot.val());
     });
 })
 
 informacionRouter.get('/alleventosActividades', async (req, res) => {
-    const ref = db.database().ref(`EventosActividades/`);
+    const ref = db.database().ref(`EventosActividades/EventosPasados`);
     ref.orderByChild('fecha'). once('value', snapshot => {
         res.send(snapshot.val());
     });

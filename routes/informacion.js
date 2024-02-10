@@ -199,7 +199,7 @@ informacionRouter.post("/agregar-carrera-grado", (req, res) => {
 informacionRouter.post("/agregar-requisitos", (req, res) => {
     var data = req.body;
     const ref = db.database().ref(`Requisitos/${req.body.nivel}/`)
-    ref.set(data).then((result) => {
+    ref.push(data).then((result) => {
             res.send(result);
     }).catch((error) => {
         // The write failed...
@@ -246,6 +246,8 @@ informacionRouter.post("/agregar-evento", (req, res) => {
     });
 
 })
+
+
 
 
 module.exports = informacionRouter;

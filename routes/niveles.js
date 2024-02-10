@@ -19,4 +19,28 @@ nivelesRouter.get('/all', async (req, res) => {
     });
 })
 
+nivelesRouter.get('/nivel/:id/:grado', async (req, res) => {
+    console.log(req.params.id , " ", req.params.grado)
+    const ref = db.database().ref(`Niveles/${req.params.id}/Carreras/${req.params.grado}/`);
+    ref.once('value', snapshot => {
+        res.send(snapshot.val());
+    });
+})
+
+nivelesRouter.post("/updateNivel", (req, res) => {
+    var data = req.body;
+        var update = db.database().ref(`Niveles/${data.id}`)
+        update.update({
+            'titulo': data.titulo,
+            'img': data.img,
+            'idImg': data.idImg
+        }).then((result) => {
+            res.send(result);
+        }).catch((error) => {
+            // The write failed...
+            res.send(error);
+        });
+  
+})
+
 module.exports = nivelesRouter;

@@ -35,11 +35,26 @@ informacionRouter.post('/delete_image', (req, res) => {
 
 
 informacionRouter.get('/info-establecimiento', async (req, res) => {
-    const ref = db.database().ref(`Establecimiento/Informacion`);
+    const ref = db.database().ref(`Establecimiento/VisionMision`);
+    ref. once('value', snapshot => {
+        res.send(snapshot.val());
+    });
+})
+
+informacionRouter.get('/info-general-establecimiento', async (req, res) => {
+    const ref = db.database().ref(`Establecimiento/`);
     ref.once('value', snapshot => {
         res.send(snapshot.val());
     });
 })
+
+informacionRouter.get('/establecimiento/:id', async (req, res) => {
+    const ref = db.database().ref(`Establecimiento/${req.params.id}`);
+    ref.once('value', snapshot => {
+        res.send(snapshot.val());
+    });
+})
+
 
 informacionRouter.get('/carreras', async (req, res) => {
     const ref = db.database().ref(`Niveles/Diversificado/Carreras`);
@@ -70,6 +85,8 @@ informacionRouter.get('/eventosActividades', async (req, res) => {
         res.send(snapshot.val());
     });
 })
+
+
 
 informacionRouter.get('/alleventosActividades', async (req, res) => {
     const ref = db.database().ref(`EventosActividades/EventosPasados`);
@@ -137,6 +154,23 @@ informacionRouter.post("/agregar-carrera", (req, res) => {
         // The write failed...
         res.send(error);
     });
+})
+
+informacionRouter.post("/updateVisionMision", (req, res) => {
+    var data = req.body;
+        var update = db.database().ref(`Establecimiento/VisionMision/${data.id}`)
+        update.update({
+            'titulo': data.titulo,
+            'descripcion': data.descripcion,
+            'idUrl': data.idUrl,
+            'url': data.url,
+        }).then((result) => {
+            res.send(result);
+        }).catch((error) => {
+            // The write failed...
+            res.send(error);
+        });
+  
 })
 
 informacionRouter.post("/agregar-carrera-grado", (req, res) => {

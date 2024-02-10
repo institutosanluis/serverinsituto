@@ -1,7 +1,9 @@
 const express = require('express');
 const informacionRouter = require('../routes/informacion');
 const nivelesRouter = require('../routes/niveles');
+const eventosRouter = require('../routes/eventos');
 const portadasRouter = require('../routes/portadas');
+const conexionRouter = require('../routes/conexion');
 
 
 const apiRouter = express.Router();
@@ -9,6 +11,8 @@ const apiRouter = express.Router();
 
 apiRouter.use('/informacion', informacionRouter);
 apiRouter.use('/niveles', nivelesRouter);
+apiRouter.use('/eventos', eventosRouter);
 apiRouter.use('/portadas', portadasRouter);
+apiRouter.use('/connect', conexionRouter);
 
 module.exports = apiRouter;

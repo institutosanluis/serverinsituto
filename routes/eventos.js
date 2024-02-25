@@ -29,8 +29,36 @@ eventosRouter.get('/eventosActividades', async (req, res) => {
 
 eventosRouter.get('/alleventosActividades', async (req, res) => {
     const ref = db.database().ref(`EventosActividades/EventosPasados`);
-    ref.orderByChild('fecha'). once('value', snapshot => {
+    ref.orderByChild('fecha').once('value', snapshot => {
         res.send(snapshot.val());
+    });
+})
+
+eventosRouter.get('/agendaFecha/:nivel/:fecha', async (req, res) => {
+    const ref = db.database().ref(`Calendario/Actividades/${req.params.nivel}/`);
+    ref.orderByChild('fecha').equalTo(req.params.fecha).on('child_added', snapshot => {
+        res.send(snapshot.val());
+    });
+})
+
+
+
+eventosRouter.post("/agendar", (req, res) => {
+    var data = req.body;
+    const ref = db.database().ref(`Calendario/Actividades/${data.nivel}`)
+    ref.push(data).then((result) => {
+        var update = db.database().ref(`Calendario/Actividades/${data.nivel}/${result.key}`)
+        update.update({
+            'id': result.key
+        }).then((result) => {
+            res.send(result);
+        }).catch((error) => {
+            // The write failed...
+            res.send(error);
+        });
+    }).catch((error) => {
+        // The write failed...
+        res.send(error);
     });
 })
 

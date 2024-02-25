@@ -38,6 +38,8 @@ admisionRouter.post("/agregar-requisitos-modulo", (req, res) => {
 })
 
 
+
+
 /*admisionRouter.post("/agregar-requisito", (req, res) => {
     var data = req.body;
     const ref = db.database().ref(`Requisitos/${req.body.nivel}/requisitos`)
@@ -69,6 +71,34 @@ admisionRouter.post("/agregar-requisito", (req, res) => {
         // The write failed...
         res.send(error);
     });
+})
+
+
+admisionRouter.post("/delete-nivel-admin", (req, res) => {
+    var data = req.body;
+    console.log(data)
+    var update = db.database().ref(`Admisiones/Niveles/${data.id}`)
+    update.remove().then((result) => {
+        res.send(result);
+    }).catch((error) => {
+        // The write failed...
+        res.send(error);
+    });
+
+})
+
+
+admisionRouter.post("/delete-requisito", (req, res) => {
+    var data = req.body;
+    console.log(data)
+    var update = db.database().ref(`Admisiones/Niveles/${data.id}/requisitos/${data.idReq}`)
+    update.remove().then((result) => {
+        res.send(result);
+    }).catch((error) => {
+        // The write failed...
+        res.send(error);
+    });
+
 })
 
 

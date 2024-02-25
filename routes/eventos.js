@@ -36,10 +36,18 @@ eventosRouter.get('/alleventosActividades', async (req, res) => {
 
 eventosRouter.get('/agendaFecha/:nivel/:fecha', async (req, res) => {
     const ref = db.database().ref(`Calendario/Actividades/${req.params.nivel}/`);
-    ref.orderByChild('fecha').equalTo(req.params.fecha).on('child_added', snapshot => {
+    ref.orderByChild('fecha').equalTo(req.params.fecha).on('value', snapshot => {
         res.send(snapshot.val());
     });
 })
+
+eventosRouter.get('/agendaFecha/:nivel', async (req, res) => {
+    const ref = db.database().ref(`Calendario/Actividades/${req.params.nivel}/`);
+    ref.once('value', snapshot => {
+        res.send(snapshot.val());
+    });
+})
+
 
 
 

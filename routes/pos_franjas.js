@@ -46,7 +46,7 @@ nosoRouter.get('/franja/:modulo/:posicion', async (req, res) => {
 })
 
 nosoRouter.post('/add', async (req, res) => {
-    console.log("dA ", req.body)
+    
     const insert = await isController.insert(req.body)
     if (insert === undefined) {
         res.json({
@@ -61,7 +61,7 @@ nosoRouter.post('/add', async (req, res) => {
 })
 
 nosoRouter.put('/update-franja', async (req, res) => {
-    console.log("dA ", req.body)
+ 
     const insert = await isController.update(req.body)
     if (insert === undefined) {
         res.json({

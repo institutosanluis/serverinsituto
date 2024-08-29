@@ -1,5 +1,6 @@
 // Imports
 require('dotenv').config();
+const { Pool } = require('pg');
 const express = require("express");
 //const connection = require('./mysql');
 const multer = require('multer')
@@ -10,17 +11,16 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { uploadImage, uploadProduct, uploadPagos, uploadChatSoporte } = require('./firebase');
 //-----------------------------------------------------------------------
-const app = express()
-// Middlewares
-app.use(express.json())
+const app = express();
+
+app.use(express.json({limit: '150mb'}));
+app.use(express.urlencoded({limit: '150mb', extended: true, parameterLimit: 150000}));
 
 var corsOptions = {
     origin: '*',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(cors(corsOptions));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 
 const apiRoutes = require('./startup/routes');

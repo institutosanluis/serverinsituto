@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "instituto-sanluis",
+  "private_key_id": "54ce34cafe981e9c317c7bc2e4ec53ac68152aec",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQCV+CMgJBis+rDy\nwLENLheYG78r7kgJSKlkakEXM8vxzYFZ7PDZb9XFH6/xf6ukJL5a7CUwYgD+stpH\nZ/WZWNNbbUd0LqF6VG2PUS22m/8wq+saeEgRZqLbiHQd6YC8/UgfXk39QXfUWuxK\n5TGykdPc2Qnqt8XUBpEt5hV0QJa454befNzFVbfi66uhALaHyzgYlgTC1W/6kh3k\nb82IkerEDody7uSVcJqe1Q76kLllUDEBgBOq5gI1OJ2u59+EyxQe5nRObUtjMRIv\nTKF4SmMUoyB9GONyj1c6paE9Qkfi54Nj50nXg73AfILM9YlQvJBaaHmyEIZJG8Hx\nyc8F3NYdAgMBAAECgf8Mp7YqY+oWlaLtO8Ep8v0nNcyyU83vPFArDcpoI9NQBZRG\nGkgwDTMaD3NR4HPs3wkmjFRh7QUL+aXU0FHZIgUl4nl+uwJ/c6yBtbEYFEh5nhPl\n+7qkQKYQ2yfRau1KVZimIUiYsrNk4le7piwD8uCPCxLBQdpayQiTv4onmQcdEUiW\nnNRSCStkKg63sfZau2iGNn3Dxs+bIpSd4aLkZC5mau3FcxhZT98/ljaE5pivgVse\nhdc+4a0DZqyYZY6GAKeuFjCS5rS/5Doz8BmbiQQAPkYskOjIrTddSX5MvjbGe9xm\nrkotbfUq6ZXK76FI9695Ovvdd6RqvycSnHCAuhECgYEAyUAZAHD/E4yiXqV/mFrH\n00xqBNXW1bZYZjrzf5sArLNoyceLV3VXes7viYLojYnB/n5Bb6Kiu6egXbNWf3y4\nah7Ye1u0gJbLkhwc+4W+r0XOaG9K8xza7ub2LYFJyy4Wkm0huBdQtAxGo8A51zNt\ngLU/Q37AsRbMnVU08mRhy00CgYEAvsSdF1tV7C4QgyOHddbiuMUrM2HVFxRm0Zl7\nAVwhMTLbr8ft4eggnMP8frNnv80/YblNtv9sWhmrHN23fAKEtGb+YKXY1hd+8FPy\nhIHrSsLlzlpPhwNa8nHJIQFEJ65TGXpw9ZNGcVaiUEgrbxm6G8H5DVBudKsIotsa\nPvfwrhECgYAG4On52eLeCDCEi6OQ0YmC71mwUJ7HLzRWSi2IbwPW40rxmqBonNog\nmHIXgSHxtIOs7yPNbQGi6FfS3A5YzSqAdg1wKfJBcuYCWHOlJS0fUIN9jlBBfvr8\nr2g6pfCfwTOETbaZVDKt9L11W1yevmM/wvImnG55nw3fUso8frHZAQKBgDsu7D2O\nzH1VXTISF7hrTjNcmCZ8t4tNfQiRwSOO3Y1R5e4G7LolNdjsxKzaI9nRZ1R+FKot\nXAQn6nouHvqOHXWKbmi1iywAZhVRNe/+Dm1HQdxfEEUmuVR2EJv4tJhK8OT6o4jM\nhBItenXFrhPtu1tZNlb3GQ2A8lD0AJSAf17BAoGBALsJKRHZpAy7jBKqxl6shNK8\n6F7ZsUXRFW44VJIqKPVm6RZ2rP8fHm4UmVdMAeDOq5a7PtlZnfmJSwgna5uaySYc\nLrDmwvZpGSdIndUT4MwnSE4XQZlxbJSPXh3MRIiNYfkzN3aUaNOtdLMQ0kwtyhdO\noHqi5gyLW8Eq7kJN+bXx\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-eorl2@instituto-sanluis.iam.gserviceaccount.com",
+  "client_id": "113694897006401036213",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-eorl2%40instituto-sanluis.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

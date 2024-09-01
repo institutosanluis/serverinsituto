@@ -9,6 +9,8 @@ const niveRouter = require('../routes/pos_niveles');
 const franRouter = require('../routes/pos_franjas');
 const notiRouter = require('../routes/pos_noticias');
 const evenRouter = require('../routes/pos_eventos');
+
+/*
 const informacionRouter = require('../routes/informacion');
 const nivelesRouter = require('../routes/niveles');
 
@@ -16,19 +18,19 @@ const reseniasRouter = require('../routes/resenias');
 const eventosRouter = require('../routes/eventos');
 const portadasRouter = require('../routes/portadas');
 const admisionRouter = require('../routes/admisiones');
-const conexionRouter = require('../routes/conexion');
+const conexionRouter = require('../routes/conexion');*/
 
 
 const apiRouter = express.Router();
 
-
+/*
 apiRouter.use('/informacion', informacionRouter);
 apiRouter.use('/niveles', nivelesRouter);
 apiRouter.use('/eventos', eventosRouter);
 apiRouter.use('/portadas', portadasRouter);
 apiRouter.use('/admision', admisionRouter);
 apiRouter.use('/resenias', reseniasRouter);
-apiRouter.use('/connect', conexionRouter);
+apiRouter.use('/connect', conexionRouter);*/
 
 
 //Conexion Postgressql

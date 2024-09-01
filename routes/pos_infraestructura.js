@@ -26,7 +26,7 @@ naveRouter.get('/all', async (req, res) => {
 })
 
 naveRouter.post('/add', async (req, res) => {
-    console.log("dA ", req.body)
+
     const insert = await isController.insert(req.body)
     if (insert === undefined) {
         res.json({

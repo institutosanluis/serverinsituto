@@ -25,6 +25,25 @@ anunRouter.get('/all', async (req, res) => {
     }
 })
 
+anunRouter.delete('/delete/:id', async (req, res) => {
+    try {
+        const result = await isController.deleteById(req.params.id);
+        if (result === undefined) {
+            res.json({
+                error: 'Error, Datos no encontrados'
+            })
+        } else {
+                return res.status(200).send({
+                    msg: 'DELETE SUCCESSFULLY'
+                });
+        }
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Error al obtener datos' });
+    }
+})
+
 anunRouter.get('/total', async (req, res) => {
     try {
         const result = await isController.getTotal();

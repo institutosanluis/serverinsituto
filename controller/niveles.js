@@ -20,6 +20,27 @@ const getMensualidades = () => { //getByEmail
     });
 };
 
+const deleteMensualidad = (id) => { //getByEmail
+    return new Promise((resolve, reject) => {
+        connection.query(
+            `delete from mensualidades
+             where id=$1;`, [id], (err, rows) => {
+            if (err) reject(err)
+            resolve(rows)
+        });
+    });
+};
+
+const getMensualidadesByNivel = (idnivel) => { //getByEmail
+    return new Promise((resolve, reject) => {
+        connection.query(
+            "SELECT * FROM mensualidades WHERE idnivel=$1;",[idnivel], (err, rows) => {
+                if (err) reject(err)
+                resolve(rows)
+            });
+    });
+};
+
 
 const getRequisitosNiveles = () => { //getByEmail
     return new Promise((resolve, reject) => {
@@ -75,10 +96,31 @@ const getCursos = (carrera) => {
     });
 }
 
+const getCursosCarreraById = (idcar, idgra) => {
+    return new Promise((resolve, reject) => {
+        connection.query(
+            `SELECT * FROM curso
+                WHERE idcarrera =$1 and idgrado= $2;`, [idcar, idgra], (err, rows) => {
+            if (err) reject(err)
+            resolve(rows)
+        });
+    });
+}
+
 const getCarreras = () => { //getByEmail
     return new Promise((resolve, reject) => {
         connection.query(
             "SELECT * FROM carreras;", (err, rows) => {
+                if (err) reject(err)
+                resolve(rows)
+            });
+    });
+};
+
+const updateCarreras = (data) => { //getByEmail
+    return new Promise((resolve, reject) => {
+        connection.query(
+            "UPDATE carreras SET url=$1 WHERE id= $2;", [data.url, data.id], (err, rows) => {
                 if (err) reject(err)
                 resolve(rows)
             });
@@ -146,6 +188,16 @@ const getGradoId = (idgrado) => { //getByEmail
     });
 };
 
+const updateGradoId = (data) => { //getByEmail
+    return new Promise((resolve, reject) => {
+        connection.query(
+            `UPDATE grados SET url = $1 WHERE id= $2 and idnivel=$3`, [data.url, data.id, data.idnivel], (err, rows) => {
+                if (err) reject(err)
+                resolve(rows)
+            });
+    });
+};
+
 const insertNiveles = (data) => { //getByEmail
     return new Promise((resolve, reject) => {
         connection.query(
@@ -156,6 +208,15 @@ const insertNiveles = (data) => { //getByEmail
     });
 };
 
+const updateNivel = (data) => { //getByEmail
+    return new Promise((resolve, reject) => {
+        connection.query(
+            "UPDATE niveles SET titulo = $1, descripcion = $2, textboton= $3 ,  url= $4 WHERE id= $5", [data.titulo, data.descripcion, data.textboton, data.url, data.id], (err, rows) => {
+                if (err) reject(err)
+                resolve(rows)
+            });
+    });
+};
 
 const insertGrado = (data) => { //getByEmail
     return new Promise((resolve, reject) => {
@@ -222,6 +283,17 @@ const updateUrlGrado = (data) => { //getByEmail
     });
 };
 
+const deleteRequisito = (id) => { //getByEmail
+    return new Promise((resolve, reject) => {
+        connection.query(
+            `delete from requisitos
+             where id=$1;`, [id], (err, rows) => {
+            if (err) reject(err)
+            resolve(rows)
+        });
+    });
+};
+
 const insertRequisitosNiveles = (data) => { //getByEmail
     return new Promise((resolve, reject) => {
         connection.query(
@@ -253,11 +325,11 @@ const insertMensualidades = (data) => { //getByEmail
 	estado ) 
             VALUES 
             ($1, $2, $3, $4, $5) RETURNING *`,
-            [	data.idnivel,
-                data.mensaje,
-                data.precio,
-                data.oferta, 
-                data.estado ], (err, rows) => {
+            [data.idnivel,
+            data.mensaje,
+            data.precio,
+            data.oferta,
+            data.estado], (err, rows) => {
                 if (err) reject(err)
                 resolve(rows)
             });
@@ -287,5 +359,12 @@ module.exports = {
     insertRequisitosNiveles,
     getRequisitosNiveles,
     insertMensualidades,
-    getMensualidades
+    getMensualidades,
+    updateNivel,
+    updateGradoId,
+    getCursosCarreraById,
+    updateCarreras,
+    deleteRequisito,
+    getMensualidadesByNivel,
+    deleteMensualidad
 }

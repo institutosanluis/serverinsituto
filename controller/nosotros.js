@@ -20,7 +20,17 @@ const insertNoso = (data) => { //getByEmail
     });
 };
 
+const updateNoso = (data) => { //getByEmail
+    return new Promise((resolve, reject) => {
+        connection.query(
+            "UPDATE nosotros SET  titulo = $1, descripcion =$2, maxcol= $3, ubicacion= $4, url = $5,  estado= $6 where id= $7",[data.titulo, data.descripcion, data.maxcol, data.ubicacion, data.url, data.estado, data.id], (err, rows) => {
+                if (err) reject(err)
+                resolve(rows)
+            });
+    });
+};
 module.exports = {
     getNosotros,
-    insertNoso
+    insertNoso,
+    updateNoso
 }

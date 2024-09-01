@@ -139,6 +139,25 @@ niveRouter.get('/cursos/:carrera', async (req, res) => {
     }
 })
 
+niveRouter.get('/cursos-carrera/:carrera/:grado', async (req, res) => {
+    try {
+        const result = await niveController.getCursosCarreraById(req.params.carrera, req.params.grado)
+        if (result === undefined) {
+            res.json({
+                error: 'Error, Datos no encontrados'
+            })
+        } else {
+            return res.status(200).send({
+                msg: 'SUCCESSFULLY',
+                result: result.rows
+            });
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Error al obtener datos' });
+    }
+})
+
 niveRouter.get('/carreras/:id', async (req, res) => {
     try {
         const result = await niveController.getCarrerasId(req.params.id)
@@ -159,6 +178,46 @@ niveRouter.get('/carreras/:id', async (req, res) => {
 })
 
 
+niveRouter.get('/mensualidad-nivel/:id', async (req, res) => {
+    try {
+        const result = await niveController.getMensualidadesByNivel(req.params.id)
+        if (result === undefined) {
+            res.json({
+                error: 'Error, Datos no encontrados'
+            })
+        } else {
+            return res.status(200).send({
+                msg: 'SUCCESSFULLY',
+                result: result[0]
+            });
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Error al obtener datos' });
+    }
+})
+
+
+niveRouter.put('/carreras-foto/:id', async (req, res) => {
+    try {
+        const result = await niveController.updateCarreras(req.body)
+        if (result === undefined) {
+            res.json({
+                error: 'Error, Datos no encontrados'
+            })
+        } else {
+            return res.status(200).send({
+                msg: 'UPDATE SUCCESSFULLY'
+            });
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Error al obtener datos' });
+    }
+})
+
+
+
 niveRouter.get('/gradoId=:id', async (req, res) => {
     try {
         const result = await niveController.getGradoId(req.params.id,)
@@ -170,6 +229,24 @@ niveRouter.get('/gradoId=:id', async (req, res) => {
             return res.status(200).send({
                 msg: 'SUCCESSFULLY',
                 result: result.rows[0]
+            });
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Error al obtener datos' });
+    }
+})
+
+niveRouter.put('/update-gradoId/:id', async (req, res) => {
+    try {
+        const result = await niveController.updateGradoId(req.body)
+        if (result === undefined) {
+            res.json({
+                error: 'Error, Datos no encontrados'
+            })
+        } else {
+            return res.status(200).send({
+                msg: 'UPDATE SUCCESSFULLY',
             });
         }
     } catch (err) {
@@ -295,6 +372,28 @@ niveRouter.get('/mensualidades', async (req, res) => {
     }
 })
 
+niveRouter.delete('/delete-mensualidad/:id', async (req, res) => {
+    try {
+        const result = await niveController.deleteMensualidad(req.params.id)
+        if (result === undefined) {
+            res.json({
+                error: 'Error, Datos no encontrados'
+            })
+        } else {
+            return res.status(200).send({
+                msg: 'SUCCESSFULLY',
+                result: result.rows
+            });
+        }
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Error al obtener datos' });
+    }
+})
+
+
+
 niveRouter.post('/add', async (req, res) => {
    
     const insert = await niveController.insertNiveles(req.body)
@@ -310,6 +409,20 @@ niveRouter.post('/add', async (req, res) => {
     }
 })
 
+niveRouter.put('/updateNivel/:id', async (req, res) => {
+   
+    const insert = await niveController.updateNivel(req.body)
+    if (insert === undefined) {
+        res.json({
+            error: 'Error,en le guardado'
+        })
+    } else {
+        return res.status(200).send({
+            msg: 'UPDATE SUCCESSFULLY'
+        });
+    }
+})
+
 niveRouter.post('/add-requisitos', async (req, res) => {
  
     const insert = await niveController.insertRequisitosNiveles(req.body)
@@ -321,6 +434,20 @@ niveRouter.post('/add-requisitos', async (req, res) => {
         return res.status(200).send({
             msg: 'SUCCESSFULLY',
             result: insert
+        });
+    }
+})
+
+niveRouter.delete('/delete-requisitos/:id', async (req, res) => {
+ console.log(req.params.id)
+    const insert = await niveController.deleteRequisito(req.params.id)
+    if (insert === undefined) {
+        res.json({
+            error: 'Error,en le guardado'
+        })
+    } else {
+        return res.status(200).send({
+            msg: 'DELETE SUCCESSFULLY',
         });
     }
 })

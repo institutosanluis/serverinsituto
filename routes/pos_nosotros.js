@@ -41,4 +41,19 @@ nosoRouter.post('/add', async (req, res) => {
     }
 })
 
+
+nosoRouter.put('/update/:id', async (req, res) => {
+  
+    const insert = await nosoController.updateNoso(req.body)
+    if (insert === undefined) {
+        res.json({
+            error: 'Error,en le guardado'
+        })
+    } else {
+        return res.status(200).send({
+            msg: 'UPDATE SUCCESSFULLY',
+        });
+    }
+})
+
 module.exports = nosoRouter;

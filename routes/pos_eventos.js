@@ -33,8 +33,6 @@ isRouter.get('/allNivelId/:id/:fecha', async (req, res) => {
     fecha: req.params.fecha,
     id: Number(req.params.id)
    }
-
-   console.log(data)
     try {
         const result = await isController.getNivelId(data)
         if (result === undefined) {

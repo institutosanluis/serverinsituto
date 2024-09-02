@@ -31,6 +31,7 @@ const getTotal = () => { //getByEmail
 };
 
 const insert = (data) => { //getByEmail
+    console.log(data)
     return new Promise((resolve, reject) => {
         connection.query(
             `INSERT INTO anuncios(	
@@ -42,7 +43,7 @@ const insert = (data) => { //getByEmail
                 url,
                 estado, 
                 tipoanuncio)
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`, [data.modulo, data.titulo, data.descripcion, data.col_text, data.col_img, data.url, data.estado, data.tipoanuncio], (err, rows) => {
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`, [data.modulo, data.titulo, data.descripcion, data.col_text, data.col_img, data.url, data.estado, data.tipo], (err, rows) => {
             if (err) reject(err)
             resolve(rows)
         });
